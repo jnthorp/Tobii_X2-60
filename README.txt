@@ -7,7 +7,7 @@ Edit 11/01/18
 
 Hardware Setup
 
-The eye tracker camera itself clips onto the base of the computer screen via the clip (I donÕt know how this works yet).
+The eye tracker camera itself clips onto the base of the computer screen via the magnetized clip.
       
 The eye tracker then plugs into the Tobii console via its own USB cable, and the console draws power from a 19V DC cable and plugs into the computer via an Ethernet cable and Trendnet Ethernet-USB converter.
       
@@ -16,13 +16,13 @@ Software / Code
 Edit: JNT 11/2018
 	This code is now on github under jnthorp/Tobii_X2-60
 
-You should be using a Matlab code that I, John Thorp, have created, or a variation of your own. If you donÕt have code, contact me at john.n.thorp@gmail.com.
+You should be using a Matlab code that I, John Thorp, have created, or a variation of your own. If you donÕt have code, contact me at john.n.thorp at gmail dot com.
 
 The Tobii Eye Tracker Manager is a quick way to check if your computer is detecting the eye tracker, and is available for free at https://www.tobiipro.com/product-listing/eye-tracker-manager/ . Make sure the eyetracker is showing up before running your task.
 
-You will need the Tobii SDK in your Matlab path (if youÕre using Matlab), available here http://developer.tobiipro.com/matlab.html 
+You will need to download the Tobii SDK and add it to your Matlab path (if you're using Matlab), available here http://developer.tobiipro.com/matlab.html 
 
-Run a calibration before the task and update at your discretion (maybe three times per whole task / hour-ish). This is called tobii_calibrate, and it should be on aa-cerberus, or (if weÕve been working together) on your local machine. Store the outputs Accuracy, Precision, and Calibrated_points in your task script.
+Run a calibration before the task and update at your discretion (maybe three times per whole task / hour-ish). This is called tobii_calibrate, and it should be on aa-cerberus, but best practice is to have it on your local machine. Store the outputs Accuracy, Precision, and Calibrated_points in your task script.
 
 	11 calibration points is best
 
@@ -47,7 +47,8 @@ The tobii_save function outputs all gaze data with columns:
 17. Right Gaze Origin Z
 
 Rundown of scripts:
-tobii_setup.m: Sets up Tobii object, finds eyetracker
+This flow will apply to all Tobii operations, not just in Matlab
+tobii_setup.m: Sets up Tobii object, finds eyetracker, call at beginning of task before calibration
 	Outputs:
 		Tobii: Tobii object with commands
 		eyetracker: eyetracker object
